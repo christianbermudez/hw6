@@ -28,6 +28,7 @@ input.addEventListener("input", () => {
 
   matches.forEach(country => {
     const div = document.createElement("div");
+    div.classList.add("suggestion");
     div.textContent = country;
     div.addEventListener("click", () => {
       input.value = country;
