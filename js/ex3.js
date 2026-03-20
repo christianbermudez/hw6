@@ -34,6 +34,20 @@ const studentList = [
 
 // TO DO - Write higher order functions / There are many solutions
 //Declare cLastNameResults. Use functional programming (filter, map, reduce, and pure functions) to generate a new array of objects (don’t use a traditional loop)
+const getMin = scores => scores.reduce((min, score) => score < min ? score : min, scores[0]);
+const getMax = scores => scores.reduce((max, score) => score > max ? score : max, scores[0]);
+const getAvg = scores => scores.reduce((sum, score) => sum + score, 0) / scores.length;
+
+// Filter, then map to new object shape
+const cLastNameResults = studentList
+  .filter(student => student.lastName.startsWith("C"))
+  .map(student => ({
+    firstName: student.firstName,
+    lastName:  student.lastName,
+    min:       getMin(student.scores),
+    max:       getMax(student.scores),
+    avg:       getAvg(student.scores)
+  }));
 
 //Output
 console.log(cLastNameResults);
